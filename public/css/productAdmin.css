@@ -4,19 +4,22 @@
     box-sizing: border-box;
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .header{
-    width: 210px;
-    height: 1323px;
+    height: 300px;
     background-color: #F2F2F2;
 }
 
-.container{
-    width: 1228px;
-    height: 1243px;
+.main-container{
+    height: 300px;
     background-color: bisque;
+}
+
+.main-container .logo{
+    display: flex;
+    align-items: center;
+}
+
+.main-container .logo p{
+    margin-left: 10px;
 }
