@@ -93,9 +93,14 @@ body {
     font-size: 18px;
     text-decoration: none;
     color: white;
-    background-color: #8D6e6e;
     border-radius: 5px;
+    background-color: #808080;
     padding: 10px 15px;
+}
+
+.main-danhmuc a:hover{
+    background-color: #8D6e6e;
+    color: white;
 }
 
 .main-header {
@@ -234,7 +239,7 @@ tbody {
 }
 
 .main-turnpage .prev {
-    padding: 5px 8px;
+    padding: 5px 10px;
     margin-right: 10px;
     border-radius: 50%;
     border: 3px solid #8D6E6E;
@@ -243,9 +248,9 @@ tbody {
 }
 
 .main-turnpage .next {
-    padding: 5px 8px;
+    padding: 5px 10px;
     margin-right: 10px;
-    border-radius: 50%;
+    border-radius: 100%;
     border: 3px solid #8D6E6E;
     background-color: #fff;
     color: #8D6E6E;
@@ -328,8 +333,14 @@ button {
     font-size: 18px;
     text-decoration: none;
     color: white;
-    background-color: #8D6e6e;
+    background-color: #808080;
     border-radius: 5px;
     padding: 10px 15px;
     border: none;
+}
+
+button:hover{
+    background-color: #8D6E6E;
+    color: white;
+    cursor: pointer;
 }
