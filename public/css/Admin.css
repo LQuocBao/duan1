@@ -308,8 +308,7 @@ tbody a:hover {
     border: none;
 }
 
-.category-main-product input,
-.category-main-product select {
+.category-main-product input {
     margin: 10px;
     width: 80%;
     height: 50px;
@@ -318,6 +317,23 @@ tbody a:hover {
     background-color: #d9d9d9;
     border: none;
     padding: 0 10px;
+}
+
+.category-main-product select {
+    margin: 10px;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #d9d9d9;
+    border: none;
+    padding: 0 10px;
+}
+
+.category-main-product input[type="file"] {
+    background-color: white;
+    padding: 0;
+    height: auto;
 }
 
 .text-main-product {
