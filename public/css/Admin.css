@@ -13,13 +13,13 @@ body {
 }
 
 .st {
-    height: 100vh;
+    max-height: 1000px;
     background-color: #f2f2f2;
     padding: 0;
 }
 
 .category-menu {
-    height: 100vh;
+    max-height: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,6 @@ body {
 
 .category-menu img {
     margin-top: 40px;
-
 }
 
 .category-menu h2 {
@@ -306,7 +305,8 @@ tbody {
     font-size: 18px;
 }
 
-.text-main-product textarea, textarea {
+.text-main-product textarea,
+textarea {
     margin: 10px;
     width: 80%;
     height: 150px;
