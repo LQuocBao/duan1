@@ -19,7 +19,7 @@ body {
 }
 
 .category-menu {
-    max-height: 1000px;
+    max-height: 2000px;
     display: flex;
     flex-direction: column;
     align-items: center;

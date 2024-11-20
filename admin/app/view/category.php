@@ -2,7 +2,7 @@
     <div class="main-category">
         <div class="main-danhmuc">
             <p>Danh mục</p>
-            <a href="../html/adminCateAdd.html">+ Thêm sản phẩm</a>
+            <a href="?page=viewaddcate">+ Thêm danh mục</a>
         </div>
         <div class="main-header">
             <div class="left-main-header">
@@ -31,14 +31,27 @@
             </thead>
             <tbody>
                 <!-- 1 box -->
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>#1234</td>
-                    <td>Tên danh mục</td>
-                    <td><span class="status success">Đang hoạt động</span></td>
-                    <td><a href="../html/adminCateEdit.html">Sửa</a></td>
-                </tr>
-                <!-- 1 box -->
+                <?php foreach ($data['listcate'] as $item) {
+                    extract($item); ?>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td> <?= $id ?></td>
+                        <td><?= $name ?></td>
+                        <?php
+                        if ($status === 1) {
+                            echo '<td><span class="status success">Đang hoạt động</span></td>';
+                        }
+                        if ($status === 2) {
+                            echo '<td><span class="status pending">Tạm ngưng</span></td>';
+                        }
+                        if ($status === 3) {
+                            echo '<td><span class="status danger">Đã hủy</span></td>';
+                        }
+                        ?>
+                        <td><a href="?page=editcate&id=<?= $id ?>">Sửa</a></td>
+                    </tr>
+                <?php } ?>
+                <!-- 1 box
                 <tr>
                     <td><input type="checkbox"></td>
                     <td>#1234</td>
@@ -46,7 +59,7 @@
                     <td><span class="status pending">Tạm ngưng</span></td>
                     <td><a href="../html/adminCateEdit.html">Sửa</a></td>
                 </tr>
-                <!-- 1 box -->
+                // 1 box
                 <tr>
                     <td><input type="checkbox"></td>
                     <td>#1234</td>
@@ -54,14 +67,14 @@
                     <td><span class="status danger">Đã hủy</span></td>
                     <td><a href="../html/adminCateEdit.html">Sửa</a></td>
                 </tr>
-                <!-- 1 box -->
+                // 1 box
                 <tr>
                     <td><input type="checkbox"></td>
                     <td>#1234</td>
                     <td>Tên danh mục</td>
                     <td><span class="status success">Đang hoạt động</span></td>
                     <td><a href="../html/adminCateEdit.html">Sửa</a></td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>
