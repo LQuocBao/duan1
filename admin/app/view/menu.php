@@ -18,7 +18,7 @@
                     <img src="public/image/logo.png" width="100px" height="100px">
                     <h2>Trạm Nhỏ Xinh</h2>
                     <ul>
-                        <li><a href="../html/adminCate.html" style="color: #8D6E6E; font-weight: 600;">Danh mục</a></li>
+                        <li><a href="index.php" style="color: #8D6E6E; font-weight: 600;">Danh mục</a></li>
                         <li><a href="../html/adminPro.html">Sản phẩm</a></li>
                         <li><a href="../html/adminUser.html">Người dùng</a></li>
                         <li><a href="../html/adminOrder.html">Đơn hàng</a></li>
