@@ -133,7 +133,7 @@ body {
     margin-right: 20px;
 }
 
-.left-main-header a {
+.left-main-header button {
     padding: 10px 30px;
     background-color: red;
     border-radius: 15px;
@@ -142,7 +142,7 @@ body {
     font-size: 12px;
 }
 
-.left-main-header a:hover {
+.left-main-header button:hover {
     background-color: rgb(209, 10, 10);
 }
 

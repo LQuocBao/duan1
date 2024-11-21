@@ -39,4 +39,10 @@ class CategoryModel
         $param = [$data['name'], $data['status']];
         return $this->db->insert($sql, $param);
     }
+
+    function deleteCate($id)
+    {
+        $sql = "DELETE FROM productcate WHERE id = ?";
+        $this->db->delete($sql, [$id]);
+    }
 }

@@ -17,11 +17,11 @@
         <div class="main-product">
             <div class="category-main-product">
                 <label for="Tên danh mục">Tên danh mục</label>
-                <input type="text" name="name" id="name" placeholder="Tên danh mục...">
+                <input type="text" name="name" id="name" placeholder="Tên danh mục..." required>
             </div>
             <div class="category-main-product">
                 <label for="status">Trạng thái</label>
-                <select name="status" id="status">
+                <select name="status" id="status" required>
                     <option value="1">Đã hoạt động</option>
                     <option value="2">Tạm ngưng</option>
                     <option value="3">Đã hủy</option>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="submit-main-product">
-            <button type="submit">Thêm danh mục</button>
+            <button type="submit" name="submit">Thêm danh mục</button>
         </div>
     </form>
 </div>

@@ -1,7 +1,9 @@
 <?php
 require_once '../app/model/database.php';
 require_once '../app/model/productCateModel.php';
+require_once '../app/model/productModel.php';
 require_once 'app/controller/adminCateController.php';
+require_once 'app/controller/adminProController.php';
 require_once 'app/view/menu.php';
 $db = new Database();
 if (isset($_GET['page'])) {
@@ -26,6 +28,18 @@ if (isset($_GET['page'])) {
         case 'addcate':
             $addcate = new CateAdminController();
             $addcate->addCate();
+            break;
+        case 'deletecate':
+            $deletecate = new CateAdminController();
+            $deletecate->delCate();
+            break;
+        case 'product':
+            $product = new ProAdminController();
+            $product->viewPro();
+            break;
+        case 'editpro':
+            $editpro = new ProAdminController();
+            // $editpro->viewEditPro();
             break;
         default:
             $category = new CateAdminController();

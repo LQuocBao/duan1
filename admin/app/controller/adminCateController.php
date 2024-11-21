@@ -3,11 +3,14 @@ class CateAdminController
 {
     private $data;
     private $category;
+    private $product;
 
     function __construct()
     {
         $this->category = new CategoryModel();
+        $this->product = new ProductModel();
     }
+
     //view giao diện
     function view($data)
     {
@@ -64,4 +67,44 @@ class CateAdminController
         echo '<script>alert("Đã thêm danh mục thành công")</script>';
         echo '<script>location.href="?page=category"</script>';
     }
+
+    // public function delCate()
+    // {
+    //     if (isset($_POST['delete_ids']) && !empty($_POST['delete_ids'])) {
+    //         $deleteIds = $_POST['delete_ids'];
+    //         // Duyệt qua từng id và xóa
+    //         foreach ($deleteIds as $id) {
+    //             $data = $this->product->get_all_pro_cate($id);
+    //             if (count($data) > 0) {
+    //                 echo '<script>alert("Không thể xóa danh mục này")</script>';
+    //             } else {
+    //                 $this->category->deleteCate($id);
+    //             }
+    //         }
+    //         echo '<script>alert("Đã xóa danh mục thành công")</script>';
+    //         echo '<script>location.href="?page=category"</script>';
+    //     }
+    // }
+
+    public function delCate()
+{
+    if (isset($_POST['delete_ids']) && !empty($_POST['delete_ids'])) {
+        $deleteIds = $_POST['delete_ids'];
+        foreach ($deleteIds as $id) {
+            // Kiểm tra nếu danh mục này còn liên kết với sản phẩm
+            $data = $this->product->get_all_pro_cate($id);
+            if (count($data) > 0) {
+                echo '<script>alert("Không thể xóa danh mục: ' . $id . ' vì đang liên kết với sản phẩm!")</script>';
+            } else {
+                $this->category->deleteCate($id);
+            }
+        }
+        echo '<script>alert("Đã xóa danh mục được chọn!")</script>';
+        echo '<script>location.href="?page=category"</script>';
+    } else {
+        echo '<script>alert("Vui lòng chọn ít nhất một danh mục để xóa!")</script>';
+        echo '<script>location.href="?page=category"</script>';
+    }
+}
+
 }

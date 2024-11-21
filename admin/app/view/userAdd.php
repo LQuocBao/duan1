@@ -25,11 +25,14 @@
                             </div>
                             <div class="category-main-product">
                                 <label for="">Vai trò</label>
-                                <input type="text">
+                                <select name="role" id="">
+                                    <option value="">Admin</option>
+                                    <option value="">Người dùng</option>
+                                </select>
                             </div>
                             <div class="category-main-product">
                                 <label for="status">Trạng thái</label>
-                                <select name="" id="">
+                                <select name="status" id="">
                                     <option value="">Đã hoạt động</option>
                                     <option value="">Tạm ngưng</option>
                                     <option value="">Đã hủy</option>

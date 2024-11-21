@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2024 lúc 12:19 PM
+-- Thời gian đã tạo: Th10 21, 2024 lúc 09:31 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.1.25
 
@@ -82,9 +82,18 @@ CREATE TABLE `post` (
   `datePost` datetime NOT NULL,
   `view` int(11) DEFAULT NULL,
   `description` text NOT NULL,
+  `status` tinyint(1) NOT NULL,
   `idCatePost` int(11) NOT NULL,
   `idUserPost` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `text`, `image`, `listImages`, `datePost`, `view`, `description`, `status`, `idCatePost`, `idUserPost`) VALUES
+(4, 'Bài Viết DB', 'Bài Viết DB', 'anh.jpg', NULL, '2024-11-21 07:50:54', NULL, 'Bài Viết DB', 0, 2, 1),
+(5, 'Bài viết 2', 'HAHA', 'haha.jpg', NULL, '2024-11-21 09:20:12', 2, 'sadfasfae', 0, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -97,6 +106,13 @@ CREATE TABLE `postcate` (
   `name` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `postcate`
+--
+
+INSERT INTO `postcate` (`id`, `name`, `status`) VALUES
+(2, 'Túi', 1);
 
 -- --------------------------------------------------------
 
@@ -229,6 +245,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `address`, `phone`, `name`, `role`, `active`) VALUES
+(1, 'huylhps38048@gmail.com', 'haha', NULL, NULL, NULL, 1, 1);
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -330,13 +353,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT cho bảng `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `postcate`
 --
 ALTER TABLE `postcate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `productcate`
@@ -366,7 +389,7 @@ ALTER TABLE `rating`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

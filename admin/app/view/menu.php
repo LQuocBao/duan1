@@ -19,9 +19,9 @@
                     <h2>Trạm Nhỏ Xinh</h2>
                     <ul>
                         <li><a href="index.php" style="color: #8D6E6E; font-weight: 600;">Danh mục</a></li>
-                        <li><a href="../html/adminPro.html">Sản phẩm</a></li>
+                        <li><a href="?page=product">Sản phẩm</a></li>
                         <li><a href="../html/adminUser.html">Người dùng</a></li>
-                        <li><a href="../html/adminOrder.html">Đơn hàng</a></li>
+                        <li><a href="?page=order">Đơn hàng</a></li>
                         <li><a href="../html/adminPost.html">Bài viết</a></li>
                         <li><a href="../html/adminComment.html">Bình luận</a></li>
                     </ul>
