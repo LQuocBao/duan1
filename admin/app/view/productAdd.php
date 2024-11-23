@@ -2,7 +2,7 @@
                     <div class="main-category">
                         <div class="main-danhmuc">
                             <p>Thêm sản phẩm</p>
-                            <a href="../html/adminPro.html">Quay về</a>
+                            <a href="?page=product">Quay về</a>
                         </div>
                         <div class="main-header">
                             <div class="right-main-header">
@@ -14,7 +14,6 @@
                     </div>
                     <!-- xong phần header -->
                     <form action="">
-
                         <div class="main-product">
                             <div class="category-main-product">
                                 <label for="Tên danh mục">Tên sản phẩm</label>

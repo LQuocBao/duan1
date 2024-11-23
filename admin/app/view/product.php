@@ -40,12 +40,12 @@
                     <tr>
                         <td><input type="checkbox"></td>
                         <td><?= $id ?></td>
-                        <td><img src="../image/imgdemo.jpg" alt="" width="100px" height="100px"></td>
+                        <td><img src="../public/image/<?= $image ?>" alt="" width="100px" height="100px"></td>
                         <td><?= $name ?></td>
                         <td>0đ</td>
                         <td>0</td>
                         <td><span class="status success">Đang hoạt động</span></td>
-                        <td><a href="../html/adminProEdit.html">Sửa</a></td>
+                        <td><a href="?page=editpro&id=<?= $id ?>">Sửa</a></td>
                     </tr>   
                 <?php } ?>
                 <!-- 1 box -->

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2024 lúc 09:31 AM
+-- Thời gian đã tạo: Th10 22, 2024 lúc 02:11 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.1.25
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,14 @@ CREATE TABLE `orderitems` (
   `idOrder` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `orderitems`
+--
+
+INSERT INTO `orderitems` (`id`, `quantity`, `priceItem`, `idProduct`, `idOrder`) VALUES
+(1, 2, 200000, 40, 1),
+(2, 3, 400000, 47, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -56,7 +64,7 @@ CREATE TABLE `orderitems` (
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `dateOrder` datetime NOT NULL,
+  `dateOrder` date NOT NULL,
   `totalPrice` int(11) NOT NULL,
   `noteUser` text NOT NULL,
   `noteAdmin` text NOT NULL,
@@ -66,6 +74,14 @@ CREATE TABLE `orders` (
   `status` tinyint(1) NOT NULL,
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `orders`
+--
+
+INSERT INTO `orders` (`id`, `dateOrder`, `totalPrice`, `noteUser`, `noteAdmin`, `name`, `address`, `phone`, `status`, `idUser`) VALUES
+(1, '2024-11-22', 200000, 'Sản phẩm oke', 'Cảm ơn bạn', 'Trần Chí Khanh', 'Tân Xuân, Hóc Môn, Tp HCM', '0376134125', 1, 2),
+(2, '2024-11-22', 400000, 'Tôi đề nghị shop kĩ luật bạn Huy', 'Dạ shop em ghi nhận và sẽ xem xét trường hợp nh', 'Quốc Bảo', 'Long An', '0785548882', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -146,12 +162,21 @@ INSERT INTO `productcate` (`id`, `name`, `status`) VALUES
 
 CREATE TABLE `productcomment` (
   `id` int(11) NOT NULL,
-  `dateProComment` datetime NOT NULL,
+  `dateProComment` date NOT NULL,
   `text` text NOT NULL,
   `status` tinyint(1) NOT NULL,
   `idProduct` int(11) NOT NULL,
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `productcomment`
+--
+
+INSERT INTO `productcomment` (`id`, `dateProComment`, `text`, `status`, `idProduct`, `idUser`) VALUES
+(1, '2024-11-22', 'Sản phẩm huy bán không như ảnh', 1, 41, 1),
+(2, '2024-11-22', 'Sản phẩm tốt lắm shop đẹp nữa', 2, 39, 2),
+(3, '2024-11-22', 'Sản phẩm chất lượng cao', 1, 42, 3);
 
 -- --------------------------------------------------------
 
@@ -181,31 +206,31 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `salePrice`, `description`, `detail`, `image`, `listImages`, `color`, `material`, `quantity`, `status`, `view`, `idCate`) VALUES
-(39, 'Gương mori', 50000, NULL, NULL, NULL, 'IMG_4822.jpg', NULL, NULL, NULL, 1, 1, NULL, 2),
-(40, 'Gương thêu hoa', 120000, NULL, NULL, NULL, 'IMG_4817.jpg', 'IMG_4818.jpg,\r\nIMG_4823.jpg,\r\nIMG_4829.jpg', NULL, NULL, 1, 1, NULL, 2),
-(41, 'Cột tóc thêu', 40000, NULL, NULL, NULL, 'IMG_4512.jpg', 'IMG_4840.jpg,\r\nIMG_4841.jpg,\r\nIMG_4842.jpg', NULL, NULL, 1, 1, NULL, 2),
-(42, 'Móc khóa gỗ vải', 30000, NULL, NULL, NULL, 'IMG_5153.jpg', '', NULL, NULL, 1, 1, NULL, 2),
-(43, 'Móc khóa len', 60000, NULL, NULL, NULL, 'IMG_4594.jpg', 'IMG_4595.jpg,\r\nIMG_4597.jpg', NULL, NULL, 1, 1, NULL, 2),
-(44, 'Khăn bandana', 165000, NULL, NULL, NULL, 'E912FE84-CB9B-4A8A-B213-5BF5D72DDCEA.jpg', 'IMG_4986.jpg,\r\nIMG_4987.jpg', NULL, NULL, 1, 1, NULL, 2),
-(45, 'Cột Srunchies', 265000, NULL, NULL, NULL, 'IMG_4819.jpg', 'IMG_4820.jpg', NULL, NULL, 1, 1, NULL, 2),
-(46, 'Dây đeo lý ức', 60000, NULL, NULL, NULL, 'IMG_5130.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
-(47, 'Hồng Ngọc Lửa', 60000, NULL, NULL, NULL, 'IMG_5136.jpg', 'IMG_5140.jpg', NULL, NULL, 1, 1, NULL, 4),
-(48, 'Ngọc xanh đại dương', 60000, NULL, NULL, NULL, 'IMG_5144.jpg', 'IMG_5141.jpg', NULL, NULL, 1, 1, NULL, 4),
-(49, 'Vòng dây basic', 40000, NULL, NULL, NULL, 'IMG_5139.jpg', 'IMG_5142.jpg,\r\nIMG_5148.jpg', NULL, NULL, 1, 1, NULL, 4),
-(50, 'Trầm Ngọc Bình Yên', 60000, NULL, NULL, NULL, 'IMG_5145.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
-(51, 'Lục lạc huyền bí', 60000, NULL, NULL, NULL, 'IMG_5146.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
-(52, 'Combo basic', 200000, NULL, NULL, NULL, 'IMG_5168.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
-(53, 'Combo đá hồng', 250000, NULL, NULL, NULL, 'IMG_5346.jpg', 'IMG_5368.jpg', NULL, NULL, 1, 1, NULL, 4),
-(54, 'Combo đá, dây trắng', 250000, NULL, NULL, NULL, 'IMG_5348.jpg', 'IMG_5364.jpg', NULL, NULL, 1, 1, NULL, 4),
-(55, 'Combo đá dây đen', 250000, NULL, NULL, NULL, 'IMG_5354.jpg', 'IMG_5360.jpg,\r\nIMG_5369.jpg,\r\nIMG_5377.jpg', NULL, NULL, 1, 1, NULL, 4),
-(56, 'Combo đá xanh', 250000, NULL, NULL, NULL, 'IMG_5365.jpg', 'IMG_5376.jpg,\r\nIMG_5388.jpg', NULL, NULL, 1, 1, NULL, 4),
-(57, 'Combo đá tím', 250000, NULL, NULL, NULL, 'IMG_5374.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
-(58, 'Combo đá dây nâu', 250000, NULL, NULL, NULL, 'IMG_5379.jpg', 'IMG_5381.jpg,\r\nIMG_5385.jpg,\r\nIMG_5387.jpg', NULL, NULL, 1, 1, NULL, 4),
-(67, 'Túi hoa len', 270000, NULL, NULL, NULL, 'IMG_4971.jpg', NULL, NULL, NULL, 1, 1, NULL, 6),
-(68, 'Túi popcorn len', 250000, NULL, NULL, NULL, 'IMG_4959.jpg', 'IMG_4966.jpg', NULL, NULL, 1, 1, NULL, 6),
-(69, 'Túi Cinta len', 200000, NULL, NULL, NULL, 'IMG_4964.jpg', NULL, NULL, NULL, 1, 1, NULL, 6),
-(70, 'Túi vuông len', 180000, NULL, NULL, NULL, 'IMG_5408.jpg', 'IMG_5410.jpg,\r\nIMG_5413.jpg', NULL, NULL, 1, 1, NULL, 6),
-(71, 'Túi tote len', 180000, NULL, NULL, NULL, 'IMG_4956.jpg', NULL, NULL, NULL, 1, 1, NULL, 6),
+(39, 'Gương mori', 50000, NULL, NULL, NULL, 'guong-mori.jpg', NULL, NULL, NULL, 1, 1, NULL, 2),
+(40, 'Gương thêu hoa', 120000, NULL, NULL, NULL, 'guong-theu-hoa.jpg', 'guong-theu-hoa1.jpg,\r\nguong-theu-hoa2.jpg,\r\nguong-theu-hoa3.jpg', NULL, NULL, 1, 1, NULL, 2),
+(41, 'Cột tóc thêu', 40000, NULL, NULL, NULL, 'cot-toc-theu.jpg', 'cot-toc-theu1.jpg,\r\ncot-toc-theu2.jpg,\r\ncot-toc-theu3.jpg', NULL, NULL, 1, 1, NULL, 2),
+(42, 'Móc khóa gỗ vải', 30000, NULL, NULL, NULL, 'moc-khoa-go-vai.jpg', 'moc-khoa-go-vai1.jpg,\r\nmoc-khoa-go-vai2.jpg,\r\nmoc-khoa-go-vai3.jpg,\r\nmoc-khoa-go-vai4.jpg,\r\nmoc-khoa-go-vai5.jpg,\r\nmoc-khoa-go-vai6.jpg,\r\nmoc-khoa-go-vai7.jpg,\r\nmoc-khoa-go-vai8.jpg,\r\nmoc-khoa-go-vai9.jpg', NULL, NULL, 1, 1, NULL, 2),
+(43, 'Móc khóa len', 60000, NULL, NULL, NULL, 'moc-khoa-len.jpg', 'moc-khoa-len1.jpg,\r\nmoc-khoa-len2.jpg', NULL, NULL, 1, 1, NULL, 2),
+(44, 'Khăn bandana', 165000, NULL, NULL, NULL, 'khan-bandana.jpg', 'khan-bandana1.jpg,\r\nkhan-bandana2.jpg', NULL, NULL, 1, 1, NULL, 2),
+(45, 'Cột Srunchies', 265000, NULL, NULL, NULL, 'cot-srunchies.jpg', 'cot-srunchies1.jpg', NULL, NULL, 1, 1, NULL, 2),
+(46, 'Dây đeo lý ức', 60000, NULL, NULL, NULL, 'day-deo-ky-uc.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
+(47, 'Hồng Ngọc Lửa', 60000, NULL, NULL, NULL, 'hong-ngoc-lua.jpg', 'hong-ngoc-lua1.jpg', NULL, NULL, 1, 1, NULL, 4),
+(48, 'Ngọc xanh đại dương', 60000, NULL, NULL, NULL, 'ngoc-xanh-dai-duong.jpg', 'ngoc-xanh-dai-duong1.jpg', NULL, NULL, 1, 1, NULL, 4),
+(49, 'Vòng dây basic', 40000, NULL, NULL, NULL, 'vong-day-basic.jpg', 'vong-day-basic1.jpg,\r\nvong-day-basic2.jpg', NULL, NULL, 1, 1, NULL, 4),
+(50, 'Trầm Ngọc Bình Yên', 60000, NULL, NULL, NULL, 'tram-ngoc-binh-yen.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
+(51, 'Lục lạc huyền bí', 60000, NULL, NULL, NULL, 'luc-lac-huyen-bi.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
+(52, 'Combo basic', 200000, NULL, NULL, NULL, 'combo-basic.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
+(53, 'Combo đá hồng', 250000, NULL, NULL, NULL, 'combo-da-hong.jpg', 'combo-da-hong1.jpg', NULL, NULL, 1, 1, NULL, 4),
+(54, 'Combo đá, dây trắng', 250000, NULL, NULL, NULL, 'combo-da-day-trang.jpg', 'combo-da-day-trang1.jpg', NULL, NULL, 1, 1, NULL, 4),
+(55, 'Combo đá dây đen', 250000, NULL, NULL, NULL, 'combo-da-day-den.jpg', 'combo-da-day-den1.jpg,\r\ncombo-da-day-den2.jpg,\r\ncombo-da-day-den3.jpg', NULL, NULL, 1, 1, NULL, 4),
+(56, 'Combo đá xanh', 250000, NULL, NULL, NULL, 'combo-da-xanh.jpg', 'combo-da-xanh1.jpg,\r\ncombo-da-xanh2.jpg', NULL, NULL, 1, 1, NULL, 4),
+(57, 'Combo đá tím', 250000, NULL, NULL, NULL, 'combo-da-tim.jpg', NULL, NULL, NULL, 1, 1, NULL, 4),
+(58, 'Combo đá dây nâu', 250000, NULL, NULL, NULL, 'combo-da-day-nau.jpg', 'combo-da-day-nau1.jpg,\r\ncombo-da-day-nau2.jpg,\r\ncombo-da-day-nau3.jpg', NULL, NULL, 1, 1, NULL, 4),
+(67, 'Túi hoa len', 270000, NULL, NULL, NULL, 'tui-hoa-len.jpg', NULL, NULL, NULL, 1, 1, NULL, 6),
+(68, 'Túi popcorn len', 250000, NULL, NULL, NULL, 'tui-popcorn-len.jpg', 'tui-popcorn-len1.jpg', NULL, NULL, 1, 1, NULL, 6),
+(69, 'Túi Cinta len', 200000, NULL, NULL, NULL, 'tui-cinta-len.jpg', NULL, NULL, NULL, 1, 1, NULL, 6),
+(70, 'Túi vuông len', 180000, NULL, NULL, NULL, 'tui-vuong-len.jpg', 'tui-vuong-len1.jpg,\r\ntui-vuong-len2.jpg', NULL, NULL, 1, 1, NULL, 6),
+(71, 'Túi tote len', 180000, NULL, NULL, NULL, 'tui-tote-len.jpg', NULL, NULL, NULL, 1, 1, NULL, 6),
 (72, 'Túi 2 dây nhỏ len', 100000, NULL, NULL, NULL, 'IMG_5417.jpg', 'IMG_5411.jpg', NULL, NULL, 1, 1, NULL, 6),
 (73, 'Túi xách tay nhỏ len', 150000, NULL, NULL, NULL, 'IMG_5577.jpg', 'IMG_5581.jpg,\r\nIMG_5597.jpg', NULL, NULL, 1, 1, NULL, 6),
 (74, 'Túi shouder len', 200000, NULL, NULL, NULL, 'IMG_4315.jpg', NULL, NULL, NULL, 1, 1, NULL, 6),
@@ -249,7 +274,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `address`, `phone`, `name`, `role`, `active`) VALUES
-(1, 'huylhps38048@gmail.com', 'haha', NULL, NULL, NULL, 1, 1);
+(1, 'huylhps38048@gmail.com', 'haha', NULL, NULL, NULL, 1, 1),
+(2, 'chikhanhno@gmail.com', 'tck0376134125', 'Tân Xuân, Hóc Môn. Tp HCM', '0376134125', 'Trần Chí Khanh', 1, 2),
+(3, 'khanhtcps38206@gmail.com', 'tck0376134125', 'Quận 12', '0123456789', 'Chí Khanh', 2, 1),
+(4, 'chikhanhno1@gmail.com', '123456', 'Tân Xuân Hóc Môn', '1234567890', 'Khanh nè', 2, 3);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -341,13 +369,13 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT cho bảng `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `post`
@@ -371,7 +399,7 @@ ALTER TABLE `productcate`
 -- AUTO_INCREMENT cho bảng `productcomment`
 --
 ALTER TABLE `productcomment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -389,7 +417,7 @@ ALTER TABLE `rating`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

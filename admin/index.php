@@ -39,7 +39,7 @@ if (isset($_GET['page'])) {
             break;
         case 'editpro':
             $editpro = new ProAdminController();
-            // $editpro->viewEditPro();
+            $editpro->viewEditPro();
             break;
         default:
             $category = new CateAdminController();

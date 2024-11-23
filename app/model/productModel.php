@@ -19,4 +19,13 @@ class ProductModel
         $sql = "SELECT * FROM products WHERE idCate = '$id'";
         return $this->db->getAll($sql);
     }
+
+    function getIdPro($id){
+        if($id > 0 ){
+            $sql =  "SELECT * FROM products WHERE id = $id";
+            return $this->db->getOne($sql);
+        }else{
+            return null;
+        }
+    }
 }

@@ -18,7 +18,15 @@
             $this->renderView('product', $this->data);
         }
 
-        // function 
+        function viewEditPro(){
+            if(isset($_GET['id']) && ($_GET['id'] > 0)){
+                $id = $_GET['id'];
+                $this->data['detail'] = $this->product->getIdPro($id);
+                $this->renderView('productEdit', $this->data);
+            }else{
+                $this->renderView('productEdit', $this->data);
+            }
+        }
 
 
 

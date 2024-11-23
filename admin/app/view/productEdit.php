@@ -2,7 +2,7 @@
                     <div class="main-category">
                         <div class="main-danhmuc">
                             <p>Thêm sản phẩm</p>
-                            <a href="../html/adminPro.html">Quay về</a>
+                            <a href="?page=product">Quay về</a>
                         </div>
                         <div class="main-header">
                             <div class="right-main-header">
@@ -13,43 +13,44 @@
                         </div>
                     </div>
                     <!-- xong phần header -->
-                    <form action="">
+                    <form action="?page=updatepro" method="post" enctype="multipart/form-data">
                         <div class="main-product">
+                        <?php extract($data['detail']);?>
                             <div class="category-main-product">
                                 <label for="Tên danh mục">Tên sản phẩm</label>
-                                <input type="text">
+                                <input type="text" value="<?= $name ?>" name="name">
                             </div>
                             <div class="category-main-product">
                                 <label for="">Giá sản phẩm</label>
-                                <input type="text">
+                                <input type="text" name="price" value="<?= $price ?>">
                             </div>
                             <div class="category-main-product">
                                 <label for="">Giá giảm</label>
-                                <input type="text">
+                                <input type="text" name="salePrice" value="<?= $salePrice?>">
                             </div>
                             <div class="category-main-product">
                                 <label for="">Số lượng</label>
-                                <input type="number">
+                                <input type="number" name="quantity" value="<?= $quantity?>">
                             </div>
                             <div class="category-main-product">
                                 <label for="status">Trạng thái</label>
-                                <select name="" id="">
-                                    <option value="">Đã hoạt động</option>
-                                    <option value="">Tạm ngưng</option>
-                                    <option value="">Đã hủy</option>
+                                <select name="status" id="">
+                                    <option class="status success" value="" <?= ($status === 1) ? 'selected' : ''?>>Đã hoạt động</option>
+                                    <option class="status pending" value="" <?= ($status === 2) ? 'selected' : ''?>>Tạm ngưng</option>
+                                    <option class="status danger" value="" <?= ($status === 3) ? 'selected' : ''?>>Đã hủy</option>
                                 </select>
                             </div>
                             <div class="category-main-product">
                                 <label for="">Hình ảnh</label>
-                                <input type="file">
+                                <input type="text" value="<?= $image ?>">
                             </div>
                             <div class="category-main-product">
                                 <label for="">Nhóm ảnh</label>
-                                <input type="file">
+                                <input type="text" value="<?= $listImages ?>">
                             </div>
                         </div>
                         <div class="submit-main-product">
-                            <button type="submit"><a href="../html/adminPro.html">Cập nhật</a></button>
+                            <button type="submit" name="submit">Cập nhật</button>
                         </div>
                     </form>
                 </div>
