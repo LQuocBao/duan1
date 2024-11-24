@@ -25,8 +25,10 @@
                     <th><input type="checkbox"></th>
                     <th>ID</th>
                     <th>Hình Ảnh</th>
+                    <th>Hình Phụ</th>
                     <th>Tên Sản Phẩm</th>
-                    <th>Giá Sản Phẩm</th>
+                    <th>Giá Gốc</th>
+                    <th>Giá Giảm</th>
                     <th>Số lượng</th>
                     <th>Trạng thái</th>
                     <th>Sửa</th>
@@ -34,20 +36,39 @@
             </thead>
             <tbody>
                 <!-- 1 box -->
-                <?php foreach ($data['listpro'] as $item) { 
+                <?php foreach ($data['listpro'] as $item) {
                     extract($item);
+                    $images = !empty($listImages) ? explode(',', $listImages) : [];
                 ?>
                     <tr>
                         <td><input type="checkbox"></td>
                         <td><?= $id ?></td>
                         <td><img src="../public/image/<?= $image ?>" alt="" width="100px" height="100px"></td>
+                        <td><?php if (!empty($images)): ?>
+                                <?php foreach ($images as $img): ?>
+                                    <img src="../public/image/<?= trim($img) ?>"
+                                        alt="Ảnh phụ"
+                                        width="30px" height="30px"
+                                        class="thumbnail"
+                                        onclick="openPopup('../public/image/<?= trim($img) ?>')">
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                Chưa có ảnh
+                            <?php endif; ?>
+                        </td>
                         <td><?= $name ?></td>
-                        <td>0đ</td>
-                        <td>0</td>
+                        <td><?= $price ?></td>
+                        <td><?= $salePrice ?></td>
                         <td><span class="status success">Đang hoạt động</span></td>
                         <td><a href="?page=editpro&id=<?= $id ?>">Sửa</a></td>
-                    </tr>   
+                    </tr>
                 <?php } ?>
+                <!-- Popup Container -->
+                <div id="popup" class="popup" onclick="closePopup()">
+                    <span class="close-btn">&times;</span>
+                    <img id="popup-img" class="popup-content" alt="Popup Image">
+                </div>
+
                 <!-- 1 box -->
                 <!-- <tr>
                                     <td><input type="checkbox"></td>
@@ -95,5 +116,5 @@
 </div>
 </div>
 </body>
-
+<script src="public/js/popup.js"></script>
 </html>

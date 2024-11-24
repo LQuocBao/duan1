@@ -2,6 +2,10 @@
 require_once '../app/model/database.php';
 require_once '../app/model/productCateModel.php';
 require_once '../app/model/productModel.php';
+require_once '../app/model/postCateModel.php';
+require_once '../app/model/postModel.php';
+require_once 'app/controller/adminPostCateController.php';
+require_once 'app/controller/adminPostController.php';
 require_once 'app/controller/adminCateController.php';
 require_once 'app/controller/adminProController.php';
 require_once 'app/view/menu.php';
@@ -41,6 +45,11 @@ if (isset($_GET['page'])) {
             $editpro = new ProAdminController();
             $editpro->viewEditPro();
             break;
+        case 'post':
+            $post = new postController();
+            $post->view();
+            break;
+        case 'deletepost'
         default:
             $category = new CateAdminController();
             $category->viewCategory();

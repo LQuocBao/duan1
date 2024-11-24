@@ -1,66 +1,62 @@
 <div class="main">
-    <div class="main-category">
-        <div class="main-danhmuc">
-            <p>Bài viết</p>
-            <a href="../html/adminPostAdd.html">+ Thêm bài viết</a>
-        </div>
-        <div class="main-header">
-            <div class="left-main-header">
-                <p>Đã chọn 3 mục</p>
-                <a href="">Xóa</a>
+    <form action="?page=deletepost" method="post" id="delete-form"> <!-- Form gửi dữ liệu xóa -->
+        <div class="main-category">
+            <div class="main-danhmuc">
+                <p>Bài viết</p>
+                <a href="index.php?page=addPost">+ Thêm bài viết</a>
             </div>
-            <div class="right-main-header">
-                <input type="text" placeholder="Tìm kiếm">
-                <div class="filter"><i class="fa-solid fa-filter"></i></div>
-                <div class="sort"><i class="fa-solid fa-arrow-down-a-z"></i></div>
+            <div class="main-header">
+                <div class="left-main-header">
+                    <p id="selected-count">Đã chọn 0 mục</p>
+                    <button type="submit" id="delete-btn" style="display: none;">Xóa</button> <!-- Nút Xóa -->
+                </div>
+                <div class="right-main-header">
+                    <input type="text" placeholder="Tìm kiếm">
+                    <div class="filter"><i class="fa-solid fa-filter"></i></div>
+                    <div class="sort"><i class="fa-solid fa-arrow-down-a-z"></i></div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Body chính (Cứ sửa những cột trong bảng, nếu dư thì cứ xóa, nó tự nhảy) -->
-    <!--không cần phải css thêm -->
-    <div class="main-product">
-        <table>
-            <thead>
-                <tr>
-                    <th><input type="checkbox"></th>
-                    <th>Tiêu đề</th>
-                    <th>Lượt xem</th>
-                    <th>Ngày đăng</th>
-                    <th>Trạng thái</th>
-                    <th>Sửa</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- 1 box -->
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Tên bài viết</td>
-                    <td>Lượt xem</td>
-                    <td>Ngày đăng</td>
-                    <td><span class="status success">Đã đăng</span></td>
-                    <td><a href="../html/adminPostEdit.html">Sửa</a></td>
-                </tr>
-                <!-- 1 box -->
-                <!-- <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>Tên bài viết</td>
-                                    <td>Lượt xem</td>
-                                    <td>Ngày đăng</td>
-                                    <td><span class="status pending">Đã đăng</span></td>
-                                    <td>Sửa</td>
-                                </tr> -->
-                <!-- 1 box -->
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>Tên bài viết</td>
-                    <td>Lượt xem</td>
-                    <td>Ngày đăng</td>
-                    <td><span class="status danger">Chưa đăng</span></td>
-                    <td><a href="../html/adminPostEdit.html">Sửa</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <!-- Body chính (Cứ sửa những cột trong bảng, nếu dư thì cứ xóa, nó tự nhảy) -->
+        <!--không cần phải css thêm -->
+        <div class="main-product">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>Tiêu đề</th>
+                        <th>Danh mục</th>
+                        <th>Lượt xem</th>
+                        <th>Ngày đăng</th>
+                        <th>Trạng thái</th>
+                        <th>Sửa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1 box -->
+                    <?php
+                    $html = '';
+                    foreach ($postDB as $item) {
+                        extract($item);
+                        $html .= '
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>' . $title . '</td>
+                                <td>' . $catePost . '</td>
+                                <td>' . $view . '</td>
+                                <td>' . $datePost . '</td>
+
+                                <td>' . $status . '</td>
+                                <td><a href="index.php?page=editPost">Sửa</a></td>
+                            </tr>
+                        ';
+                    }
+                    echo $html;
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </form>
     <!-- button chuyển trang -->
     <div class="main-turnpage">
         <button class="prev">1</button>
@@ -71,6 +67,6 @@
 </div>
 </div>
 </div>
+<script src="public/js/delete.js"></script>
 </body>
-
 </html>
