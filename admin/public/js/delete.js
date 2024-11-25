@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const selectAllCheckbox = document.getElementById("select-all");
-  const itemCheckboxes = document.querySelectorAll(".item-checkbox");
-  const deleteBtn = document.getElementById("delete-btn");
-  const selectedCount = document.getElementById("selected-count");
+  const selectAllCheckbox = document.getElementById("select-all"); // Checkbox "chọn tất cả"
+  const itemCheckboxes = document.querySelectorAll(".item-checkbox"); // Checkbox từng mục
+  const deleteBtn = document.getElementById("delete-btn"); // Nút Xóa
+  const selectedCount = document.getElementById("selected-count"); // Số lượng mục đã chọn
 
   // Hàm cập nhật số lượng đã chọn
   const updateSelectedCount = () => {
@@ -14,13 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Xử lý chọn tất cả checkbox
-  selectAllCheckbox.addEventListener("change", function () {
-    const isChecked = this.checked;
-    itemCheckboxes.forEach((checkbox) => {
-      checkbox.checked = isChecked;
+  if (selectAllCheckbox) {
+    selectAllCheckbox.addEventListener("change", function () {
+      const isChecked = this.checked;
+      itemCheckboxes.forEach((checkbox) => {
+        checkbox.checked = isChecked;
+      });
+      updateSelectedCount();
     });
-    updateSelectedCount();
-  });
+  }
 
   // Xử lý checkbox từng mục
   itemCheckboxes.forEach((checkbox) => {

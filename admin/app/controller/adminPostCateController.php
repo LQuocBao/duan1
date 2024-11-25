@@ -1,9 +1,9 @@
 <?php
-class postCateController{
+class PostCateAdminController{
     private $postCateModel;
     function __construct()
     {
-        $this->postCateModel = new postCateModel();
+        $this->postCateModel = new PostCateModel();
     }
 }
 ?>

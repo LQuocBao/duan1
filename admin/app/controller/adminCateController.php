@@ -79,7 +79,7 @@ class CateAdminController
     //                 echo '<script>alert("Không thể xóa danh mục này")</script>';
     //             } else {
     //                 $this->category->deleteCate($id);
-    //             }
+    //             }    
     //         }
     //         echo '<script>alert("Đã xóa danh mục thành công")</script>';
     //         echo '<script>location.href="?page=category"</script>';
@@ -87,24 +87,23 @@ class CateAdminController
     // }
 
     public function delCate()
-{
-    if (isset($_POST['delete_ids']) && !empty($_POST['delete_ids'])) {
-        $deleteIds = $_POST['delete_ids'];
-        foreach ($deleteIds as $id) {
-            // Kiểm tra nếu danh mục này còn liên kết với sản phẩm
-            $data = $this->product->get_all_pro_cate($id);
-            if (count($data) > 0) {
-                echo '<script>alert("Không thể xóa danh mục: ' . $id . ' vì đang liên kết với sản phẩm!")</script>';
-            } else {
-                $this->category->deleteCate($id);
+    {
+        if (isset($_POST['delete_ids']) && !empty($_POST['delete_ids'])) {
+            $deleteIds = $_POST['delete_ids'];
+            foreach ($deleteIds as $id) {
+                // Kiểm tra nếu danh mục này còn liên kết với sản phẩm
+                $data = $this->product->get_all_pro_cate($id);
+                if (count($data) > 0) {
+                    echo '<script>alert("Không thể xóa danh mục: ' . $id . ' vì đang liên kết với sản phẩm!")</script>';
+                } else {
+                    $this->category->deleteCate($id);
+                }
             }
+            echo '<script>alert("Đã xóa danh mục được chọn!")</script>';
+            echo '<script>location.href="?page=category"</script>';
+        } else {
+            echo '<script>alert("Vui lòng chọn ít nhất một danh mục để xóa!")</script>';
+            echo '<script>location.href="?page=category"</script>';
         }
-        echo '<script>alert("Đã xóa danh mục được chọn!")</script>';
-        echo '<script>location.href="?page=category"</script>';
-    } else {
-        echo '<script>alert("Vui lòng chọn ít nhất một danh mục để xóa!")</script>';
-        echo '<script>location.href="?page=category"</script>';
     }
-}
-
 }

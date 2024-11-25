@@ -8,7 +8,7 @@
             <div class="main-header">
                 <div class="left-main-header">
                     <p id="selected-count">Đã chọn 0 mục</p>
-                    <button type="submit" id="delete-btn" style="display: none;">Xóa</button> <!-- Nút Xóa -->
+                    <button type="submit" id="delete-btn" style="display: none;">Xóa</button><!-- Nút Xóa -->
                 </div>
                 <div class="right-main-header">
                     <input type="text" placeholder="Tìm kiếm">
@@ -23,7 +23,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox"></th>
+                        <th><input type="checkbox" id="select-all"></th>
                         <th>Tiêu đề</th>
                         <th>Danh mục</th>
                         <th>Lượt xem</th>
@@ -40,14 +40,13 @@
                         extract($item);
                         $html .= '
                             <tr>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" class="item-checkbox" name="delete_ids[]" value="'. $id .'"></td>
                                 <td>' . $title . '</td>
                                 <td>' . $catePost . '</td>
                                 <td>' . $view . '</td>
                                 <td>' . $datePost . '</td>
-
                                 <td>' . $status . '</td>
-                                <td><a href="index.php?page=editPost">Sửa</a></td>
+                                <td><a href="index.php?page=viewEditPost&id=' . $id . '">Sửa</a></td>
                             </tr>
                         ';
                     }
@@ -69,4 +68,5 @@
 </div>
 <script src="public/js/delete.js"></script>
 </body>
+
 </html>
