@@ -27,15 +27,15 @@ class Database
         return $this->stmt;
     }
 
-    public function getAll($sql)
+    public function getAll($sql, $param = [])
     {
-        $statement = $this->query($sql);
+        $statement = $this->query($sql, $param);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function getOne($sql)
+    // thêm $param = []
+    public function getOne($sql, $param = [])
     {
-        $statement = $this->query($sql);
+        $statement = $this->query($sql, $param);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 

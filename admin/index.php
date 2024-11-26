@@ -5,17 +5,21 @@ require_once '../app/model/productModel.php';
 require_once '../app/model/postCateModel.php';
 require_once '../app/model/postModel.php';
 require_once '../app/model/userModel.php';
+require_once '../app/model/commentModel.php';
+require_once '../app/model/orderModel.php';
 require_once 'app/controller/adminCateController.php';
 require_once 'app/controller/adminProController.php';
 require_once 'app/controller/adminPostCateController.php';
 require_once 'app/controller/adminPostController.php';
 require_once 'app/controller/adminUserController.php';
+require_once 'app/controller/adminCommentController.php';
+require_once 'app/controller/adminOrderController.php';
 require_once 'app/view/menu.php';
 $db = new Database();
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
     switch ($page) {
-        //category
+            //category
         case 'category':
             $category = new CateAdminController();
             $category->viewCategory();
@@ -40,16 +44,19 @@ if (isset($_GET['page'])) {
             $deletecate = new CateAdminController();
             $deletecate->delCate();
             break;
-        //product
+            //product
         case 'product':
             $product = new ProAdminController();
             $product->viewPro();
             break;
-        //post
         case 'editpro':
             $editpro = new ProAdminController();
             $editpro->viewEditPro();
             break;
+        case 'updatepro':
+            $updatepro = new ProAdminController();
+            $updatepro->updatePro();
+            //post
         case 'post':
             $post = new PostAdminController();
             $post->view();
@@ -70,7 +77,7 @@ if (isset($_GET['page'])) {
             $deletepost = new PostAdminController();
             $deletepost->delPost();
             break;
-        //user
+            //user
         case 'user':
             $user = new UserController();
             $user->viewUser();
@@ -90,6 +97,24 @@ if (isset($_GET['page'])) {
         case 'deleteuser':
             $deleteuser = new UserController();
             $deleteuser->delUser();
+            break;
+            //order
+        case 'order':
+            $order = new adminOrderController();
+            $order->viewOrd();
+            break;
+        case 'orderDetail':
+            $orderDetail = new adminOrderController();
+            $orderDetail->OrdDetail();
+            break;
+            //comment
+        case 'comment':
+            $comment = new CommentAdminController();
+            $comment->viewCmt();
+            break;
+        case 'commentDetail':
+            $commentdetail = new CommentAdminController();
+            $commentdetail->CmtDetail();
             break;
         default:
             $category = new CateAdminController();

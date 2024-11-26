@@ -20,12 +20,22 @@ class ProductModel
         return $this->db->getAll($sql);
     }
 
-    function getIdPro($id){
-        if($id > 0 ){
+    function getIdPro($id)
+    {
+        if ($id > 0) {
             $sql =  "SELECT * FROM products WHERE id = $id";
             return $this->db->getOne($sql);
-        }else{
+        } else {
             return null;
         }
+    }
+
+    function upProduct($data)
+    {
+        $sql = "UPDATE products 
+            SET name = ?, price = ?, salePrice = ?, quantity = ?, status = ?, image = ?, listImages = ?
+            WHERE id = ?";
+        $params = [$data['name'], $data['price'], $data['salePrice'], $data['quantity'], $data['status'], $data['image'], $data['listImages'], $data['id']];
+        $this->db->update($sql, $params);
     }
 }

@@ -59,7 +59,12 @@
                         <td><?= $name ?></td>
                         <td><?= number_format($price, 0, ',', '.') ?></td>
                         <td><?= number_format($salePrice, 0, ',', '.') ?></td>
-                        <td><span class="status success">Đang hoạt động</span></td>
+                        <td><?= $quantity ?></td>
+                        <?php
+                        if ($status === 1) echo '<td><span class="status success">Đang hoạt động</span></td>';
+                        if ($status === 2) echo '<td><span class="status pending">Tạm ngưng</span></td>';
+                        if ($status === 0) echo '<td><span class="status danger">Đã hủy</span></td>';
+                        ?>
                         <td><a href="?page=editpro&id=<?= $id ?>">Sửa</a></td>
                     </tr>
                 <?php } ?>
@@ -68,40 +73,6 @@
                     <span class="close-btn">&times;</span>
                     <img id="popup-img" class="popup-content" alt="Popup Image">
                 </div>
-
-                <!-- 1 box -->
-                <!-- <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>#1234</td>
-                                    <td><img src="../image/imgdemo.jpg" alt="" width="100px" height="100px"></td>
-                                    <td>Tên Sản Phẩm</td>
-                                    <td>0đ</td>
-                                    <td>0</td>
-                                    <td><span class="status pending">Tạm ngưng</span></td>
-                                    <td><a href="../html/adminProEdit.html">Sửa</a></td>
-                                </tr> -->
-                <!-- 1 box -->
-                <!-- <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>#1234</td>
-                                    <td><img src="../image/imgdemo.jpg" alt="" width="100px" height="100px"></td>
-                                    <td>Tên Sản Phẩm</td>
-                                    <td>0đ</td>
-                                    <td>0</td>
-                                    <td><span class="status danger">Đã hủy</span></td>
-                                    <td><a href="../html/adminProEdit.html">Sửa</a></td>
-                                </tr> -->
-                <!-- 1 box -->
-                <!-- <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td>#1234</td>
-                                    <td><img src="../image/imgdemo.jpg" alt="" width="100px" height="100px"></td>
-                                    <td>Tên Sản Phẩm</td>
-                                    <td>0đ</td>
-                                    <td>0</td>
-                                    <td><span class="status success">Đang hoạt động</span></td>
-                                    <td><a href="../html/adminProEdit.html">Sửa</a></td>
-                                </tr> -->
             </tbody>
         </table>
     </div>
@@ -117,4 +88,5 @@
 </div>
 </body>
 <script src="public/js/popup.js"></script>
+
 </html>
